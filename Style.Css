@@ -1,0 +1,359 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #101010;
+    --surface: #1b1b1b;
+    --red: #e32636;
+    --white: #f5f5f5;
+    --muted: #b7b7b7;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+/* Gruppselektor: samma grundstil för flera element */
+h1, h2, h3, p {
+    margin-bottom: 1rem;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+p {
+    color: var(--muted);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ===== NAVIGATION ===== */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 7%;
+    background-color: #080808;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span,
+h1 span,
+.page-heading h1 span {
+    color: var(--red);
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+nav a {
+    color: var(--muted);
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--red);
+}
+
+/* ===== STARTSIDA ===== */
+
+.hero {
+    min-height: 75vh;
+    display: grid;
+    align-items: center;
+    padding: 5rem 10%;
+    background:
+        linear-gradient(90deg, #101010 10%, rgba(16, 16, 16, 0.7) 65%, rgba(16, 16, 16, 0.3)),
+        url("https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-content h1 {
+    letter-spacing: 3px;
+}
+
+.hero-content > p:not(.eyebrow) {
+    max-width: 500px;
+    font-size: 1.1rem;
+}
+
+.eyebrow {
+    color: var(--red);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.5rem;
+    background-color: var(--red);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: #ad1726;
+}
+
+.section {
+    padding: 5rem 8%;
+}
+
+.intro {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.intro > p:not(.eyebrow) {
+    max-width: 750px;
+}
+
+.featured {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 3rem;
+    background-color: var(--surface);
+}
+
+.featured img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.text-link {
+    color: var(--red);
+    font-weight: bold;
+}
+
+.cta {
+    text-align: center;
+}
+
+/* ===== UNDERSIDOR ===== */
+
+.page-heading {
+    padding: 5rem 8% 3rem;
+    text-align: center;
+    background: linear-gradient(180deg, #202020, var(--background));
+}
+
+.page-heading p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== MEDLEMMAR ===== */
+
+.members {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.member-card,
+.album-card {
+    overflow: hidden;
+    background-color: var(--surface);
+    border: 1px solid #303030;
+}
+
+.member-card img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.member-card h2,
+.album-card h3 {
+    margin-bottom: 0.75rem;
+}
+
+.member-card p:last-child,
+.album-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== ALBUM ===== */
+
+.albums {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.album-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.album-card ol {
+    padding-left: 1.4rem;
+    color: var(--muted);
+}
+
+.album-card li {
+    padding: 0.25rem 0;
+}
+
+/* nth-child: varannan låt får en annan bakgrund */
+.album-card li:nth-child(even) {
+    color: var(--white);
+}
+
+/* ===== TOPPLISTA OCH TABELL ===== */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #353535;
+}
+
+th {
+    background-color: var(--red);
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--surface);
+}
+
+tbody tr:hover {
+    background-color: #292020;
+}
+
+td:first-child {
+    color: var(--red);
+    font-weight: bold;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    padding: 2rem;
+    text-align: center;
+    background-color: #080808;
+    border-top: 1px solid #333;
+}
+
+footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* ===== RESPONSIV DESIGN ===== */
+
+@media (max-width: 800px) {
+    .site-header {
+        flex-direction: column;
+    }
+
+    .hero {
+        min-height: 65vh;
+        padding: 4rem 7%;
+    }
+
+    .featured,
+    .members {
+        grid-template-columns: 1fr;
+    }
+
+    .albums {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .albums {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 3rem 6%;
+    }
+
+    .member-card img {
+        height: 300px;
+    }
+
+    th,
+    td {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+}
